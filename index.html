@@ -1,245 +1,292 @@
-# sundie.github.io
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial scale=1.0">
-    <title>Happy Birthday, My krizza!💌</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday, My Krizza 💌</title>
 
-    <style>
-        *{
-            margine:0;
-            padding:0;
-            box-sizing:border-box;
-            font-family: 'Poppins', sans serif;
-        }
-        body{
-            background: linear gradient(to bottom right, #ffd6e7, #fff0f5);
-            overflow-x:hidden;
-            color:#444;
-        }
-        
-        .container{
-            width:100%;
-            min-height:100vh;
-            display:flex;
-            justify-content:center;
-            align items:center;
-            flex-direction:column;
-            text-alignmrnt:center;
-            padding:30px;
-        }
-        
-        h1{
-            font-size:3rem;
-            color:#ff4f89;
-            margin-bottom:15px;
-        }
-        
-        .intro{
-            font-size:1.2rem;
-            margin-bottom:30px;
-        }
-        
-        button{
-            padding:15px 35px;
-            border:none;
-            border-radius:30px;
-            background:#ff4f87;
-            color:white;
-            font-size:1rem;
-            cursor:pointer;
-            transition:0.3s;
-            box-shadow:0 5px 15px rgba(0,0,0,0.1);
-            margin-top:20px
-        }
-        
-        button:hover{
-            transform:scale(1.05);
-            background:#ff2f72;
-        }
-        .section{
-            display:none;
-            max-width:800px;
-            width:100%;
-            background:white;
-            padding:40px;
-            border-radius:25px;
-            margin-top:40px;
-            box-shadow:0 10px 30px rgba(0,0,0,.1);
-            animation:fadeIn 1s ease;
-        }
-         .gallery{
-            margin-top:40px;
-            display:grid;
-            grid-templates-columns:repeat(auto-fit, minmax(180px,1fr));
-            gap:15px;
-            margin-top:20px;
-         }
-        
-        .gallery img{
-            width:100%;
-            height:250px;
-            object-fit:cover;
-            border-radius:20px;
-            transition:0.3s;
-        }
-        
-         .gallery img:hover{
-            transform:scale(1.03);
+```
+<style>
+    *{
+        margin:0;
+        padding:0;
+        box-sizing:border-box;
+        font-family:'Poppins', sans-serif;
+    }
+
+    body{
+        background:linear-gradient(to bottom right, #ffd6e7, #fff0f5);
+        overflow-x:hidden;
+        color:#444;
+    }
+
+    .container{
+        width:100%;
+        min-height:100vh;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        flex-direction:column;
+        text-align:center;
+        padding:30px;
+        position:relative;
+        z-index:1;
+    }
+
+    h1{
+        font-size:3rem;
+        color:#ff4f89;
+        margin-bottom:15px;
+    }
+
+    .intro{
+        font-size:1.2rem;
+        margin-bottom:30px;
+    }
+
+    button{
+        padding:15px 35px;
+        border:none;
+        border-radius:30px;
+        background:#ff4f87;
+        color:white;
+        font-size:1rem;
+        cursor:pointer;
+        transition:0.3s;
+        box-shadow:0 5px 15px rgba(0,0,0,0.1);
+    }
+
+    button:hover{
+        transform:scale(1.05);
+        background:#ff2f72;
+    }
+
+    .section{
+        display:none;
+        max-width:800px;
+        width:100%;
+        background:white;
+        padding:40px;
+        border-radius:25px;
+        margin-top:40px;
+        box-shadow:0 10px 30px rgba(0,0,0,.1);
+        animation:fadeIn 1s ease;
+    }
+
+    .gallery{
+        display:grid;
+        grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+        gap:15px;
+        margin-top:20px;
+    }
+
+    .gallery img{
+        width:100%;
+        height:250px;
+        object-fit:cover;
+        border-radius:20px;
+        transition:.3s;
+    }
+
+    .gallery img:hover{
+        transform:scale(1.03);
+    }
+
+    iframe{
+        width:100%;
+        height:352px;
+        border:none;
+        border-radius:20px;
+        margin-top:20px;
+    }
+
+    .letter{
+        text-align:left;
+        line-height:1.8;
+        font-size:1.1rem;
+        white-space:pre-wrap;
+    }
+
+    h2{
+        color:#ff4f87;
+        margin-bottom:20px;
+    }
+
+    @keyframes fadeIn{
+        from{
+            opacity:0;
+            transform:translateY(20px);
         }
 
-        iframe{
-            width:100%;
-            height:352px;
-            border:none;
-            border-radius:20px;
-            margin-top:20px;
+        to{
+            opacity:1;
+            transform:translateY(0);
+        }
+    }
+
+    .hearts{
+        position:fixed;
+        top:0;
+        left:0;
+        width:100%;
+        height:100%;
+        pointer-events:none;
+        overflow:hidden;
+        z-index:0;
+    }
+
+    .heart{
+        position:absolute;
+        color:#ff7aa8;
+        animation:float 6s linear infinite;
+    }
+
+    @keyframes float{
+        from{
+            transform:translateY(100vh);
+            opacity:1;
         }
 
-        .letter{
-            text-align:left;
-            line-height:1.8px;
-            font-size:1.1rem;
-            white-space:pre-wrap;
-            min-height:300px;
+        to{
+            transform:translateY(-10vh);
+            opacity:0;
         }
+    }
+</style>
+```
 
-        h2{
-            color:#ff4f87;
-            margin-bottom:20px;
-        }
-        
-        @keyframes fadeIn{
-            from{
-                opacity:0;
-                transform:translateY(20px);
-            }
-            
-            to{
-                opcity:1;
-                transform:translateY(0);
-            }
-        }
-        
-        .hearts{
-            position:fixed;
-            width:100%;
-            height:100%;
-            pointer-events:none;
-            overflow:hidden;
-            top:0;
-            left:0;
-        }
-        
-        .heart{
-            position:absolute;
-            color:#ff7aa8;
-            animation:float 6s linear infinite;
-            font-size:20px;
-        }
-        
-        @keyframes float{
-            from{
-                transform:translateY(100vh);
-                opacity:1;
-            }
-            
-            to{
-                transform:translateY(-10vh);
-                opacity:0;
-            }
-        }
-    </style>
-/head>
+</head>
 
-body>
-    
-    <div class="hearts"></div
-    <div class="container">
-        <h1>Hi Krizza, Happy Birthday!💗</h1>
+<body>
 
-        <p class="intro">
-            click to open my gift
-        </p>
-            
-        <button onclick="openLetter()">Open Gift 🎁</button>
-        <div class="section" id="photoSection">
-            <h2>cute pics mo</h2>
-            <div class="gallery">
-                <img src= 
+<div class="hearts"></div>
 
-        </div>
+<div class="container">
 
-        <div class="section" id="songSection">
-            <h2>i dedicated this song for you</h2>
+```
+<h1>Hi Krizza, Happy Birthday! 💗</h1>
 
-            <iframe
-                src="https://open.spotify.com/track/1etOJ1EIVf7Qf51rmm0Zmd?si=pLtk-66-TOWDrU8FGJzWUA"
-                allowfullscreen=""
-                allow="auroplay; clipboard-writer; encrypted-media; fullscreen; picture-in-picture">
-            </div>
+<p class="intro">
+    Click the button below to open my gift for you.
+</p>
 
-        <div class="letter-section" id="letterSection">
-            <h2>For You 💌</h2>
+<button onclick="openGift()">Open Gift 🎁</button>
 
-            <p class="letter" id="typewriter"></p>
-        </div>
+<div class="section" id="photoSection">
+    <h2>Cute Pics Mo 💕</h2>
+
+    <div class="gallery">
+        <img src="images/photo1.jpg" alt="Photo 1">
+        <img src="images/photo2.jpg" alt="Photo 2">
+        <img src="images/photo3.jpg" alt="Photo 3">
+        <img src="images/photo4.jpg" alt="Photo 4">
     </div>
+</div>
 
-    <script>
-        function openGift(){
-            document.getElementById("songSection").style.display = "block";
+<div class="section" id="songSection">
+    <h2>I Dedicated This Song For You 🎶</h2>
 
-            window.scrollTo({
-                top: document.body.scrollHeight,
-                behavior: "smooth"
-            });
+    <iframe
+        src="https://open.spotify.com/embed/track/1etOJ1EIVf7Qf51rmm0Zmd"
+        allowfullscreen
+        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture">
+    </iframe>
+</div>
+
+<div class="section" id="letterSection">
+    <h2>For You 💌</h2>
+
+    <p class="letter" id="typewriter"></p>
+</div>
+```
+
+</div>
+
+<script>
+
+function openGift(){
+    document.getElementById("photoSection").style.display = "block";
+    document.getElementById("songSection").style.display = "block";
+
+    showLetter();
+
+    window.scrollTo({
+        top: document.body.scrollHeight,
+        behavior: "smooth"
+    });
+}
+
+function showLetter(){
+
+    document.getElementById("letterSection").style.display = "block";
+
+    const message = `
+Happy Birthday, my Krizza! 💗
+
+First of all, thank you for existing.
+
+Thank you for being someone who makes ordinary days feel softer, lighter, and happier.
+
+Today is all about celebrating you—your kindness, your strength, your growth, and all the things that make you who you are.
+
+I hope you take a moment to look back on everything you've been through and realize just how far you've come.
+
+You deserve a day filled with genuine happiness, laughter, and moments that make you smile.
+
+I hope life becomes kinder to you. I hope the things you've been carrying become lighter someday.
+
+You deserve all the love, peace, and beautiful things this world can offer.
+
+And since it's your birthday, I want to be honest about something I've been keeping to myself for a while now.
+
+May I court you?
+
+I'm not asking for an answer right now. I simply want the chance to show you how sincere my intentions are through consistency, patience, effort, and care.
+
+Again, happy birthday, Krizza Mae!
+
+I hope today reminds you how special you are—not only to the people around you, but especially to someone like me. 💗
+`;
+
+    const target = document.getElementById("typewriter");
+
+    target.innerHTML = "";
+
+    let i = 0;
+
+    function typeWriter(){
+        if(i < message.length){
+            target.innerHTML += message.charAt(i);
+            i++;
+            setTimeout(typeWriter, 35);
         }
-        function showLetter(){
-            document.getElementById("letterSection").style.display = "block";
-            
-            const message = happy birthday, my krizza!
-                
+    }
 
-                 ;
-            
-                    let i = 0;
-                    const speed = 35;
-                    const target = document.getElementById("typewriter");
+    typeWriter();
+}
 
-                    function typewriter(){
-                        if(i < message.length){
-                            target.innerHTML += message.charAt(i);
-                            i++;
-                            setTimeout(typewriter, speed);
-                        }
-                    }
-                    typewriter();
+const hearts = document.querySelector(".hearts");
 
-                    window.scrollTo({
-                        top: document.body.scrollHeight,
-                        behavior: "smooth"
-                    });
-                }
-            const hearts = document.querySelector('.hearts');
-        
-            setInterval(() => {
-                const heart = document.createElement('div');
-                heart.classList.add('heart');
-                heart.innerHTML = '💗';
-            
-                heart.style.left = Math.random() * 100 + 'vw';
-                heart.style.fontSize = Math.random() * 20 + 15 + 'px';
-            
-                hearts.appendChild(heart);
-            
-                setTimeout(() => {
-                    heart.remove();
-                }, 6000);
-            
-            }, 300);
-         </script>
-    
-    </body>
-    </html>
+setInterval(() => {
+
+    const heart = document.createElement("div");
+
+    heart.classList.add("heart");
+    heart.innerHTML = "💗";
+
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = (Math.random() * 20 + 15) + "px";
+
+    hearts.appendChild(heart);
+
+    setTimeout(() => {
+        heart.remove();
+    }, 6000);
+
+}, 300);
+
+</script>
+
+</body>
+</html>
