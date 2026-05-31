@@ -60,6 +60,7 @@ body::before{
     position:relative;
     border-radius:0 0 12px 12px;
     box-shadow:0 10px 30px rgba(0,0,0,.15);
+    overflow:hidden;
 }
 
 /* Flap */
@@ -72,8 +73,8 @@ body::before{
     position:absolute;
     top:0;
     transform-origin:top;
-    transition:.8s;
-    z-index:5;
+    transition:1s ease;
+    z-index:100;
 }
 
 /* Heart Seal */
@@ -83,7 +84,7 @@ body::before{
     left:50%;
     transform:translateX(-50%);
     font-size:2rem;
-    z-index:6;
+    z-index:101;
 }
 
 /* Letter */
@@ -93,11 +94,11 @@ body::before{
     height:420px;
     background:#fffdf8;
     left:20px;
-    top:10px;
+    top:180px;
     border-radius:12px;
     padding:20px;
     box-shadow:0 10px 20px rgba(0,0,0,.15);
-    transition:.8s;
+    transition:1.2s ease;
     z-index:1;
     overflow-y:auto;
 }
@@ -106,21 +107,42 @@ body::before{
     font-family:'Dancing Script',cursive;
     color:#ff4d88;
     text-align:center;
-    margin-bottom:10px;
+    margin-bottom:15px;
+    font-size:2.5rem;
 }
 
-.letter p{
-    line-height:1.7;
+#typing-text{
+    font-family:'Dancing Script',cursive;
+    font-size:1.6rem;
     color:#444;
+    line-height:1.8;
     text-align:center;
+    min-height:180px;
 }
 
-/* Photo Gallery */
+#typing-text::after{
+    content:"|";
+    animation:blink .8s infinite;
+}
+
+@keyframes blink{
+    50%{
+        opacity:0;
+    }
+}
+
+/* Photos */
 .photos{
     display:grid;
     grid-template-columns:1fr 1fr;
     gap:10px;
     margin:20px 0;
+    opacity:0;
+    transition:1.5s ease;
+}
+
+.photos.show{
+    opacity:1;
 }
 
 .photos img{
@@ -131,29 +153,29 @@ body::before{
     border:3px solid #ffd1dc;
 }
 
-/* Open Animation */
-#open:checked ~ .envelope .flap{
-    transform:rotateX(180deg);
-}
-
-#open:checked ~ .letter{
-    transform:translateY(-250px);
-}
-
-/* Open Button */
-.open-btn{
-    position:absolute;
-    width:340px;
-    height:220px;
-    z-index:20;
-}
-
 .signature{
     margin-top:20px;
     text-align:right;
     font-family:'Dancing Script',cursive;
     font-size:1.8rem;
     color:#ff4d88;
+}
+
+/* Open Animation */
+#open:checked ~ .envelope .flap{
+    transform:rotateX(180deg);
+}
+
+#open:checked ~ .letter{
+    transform:translateY(-320px);
+}
+
+/* Click Area */
+.open-btn{
+    position:absolute;
+    width:340px;
+    height:220px;
+    z-index:200;
 }
 </style>
 </head>
@@ -169,11 +191,7 @@ body::before{
 
         <h1>My Love ❤️</h1>
 
-        <p>
-            Every moment with you feels like a beautiful dream.
-            Thank you for bringing happiness, warmth, and love into my life.
-            No matter where life takes us, you will always have a special place in my heart.
-        </p>
+        <p id="typing-text"></p>
 
         <div class="photos">
             <img src="https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?w=500" alt="">
@@ -182,7 +200,7 @@ body::before{
             <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=500" alt="">
         </div>
 
-        <p>
+        <p style="text-align:center;">
             You are my favorite chapter, my safest place,
             and the most beautiful part of every day.
         </p>
@@ -199,6 +217,56 @@ body::before{
     </div>
 
 </div>
+
+<script>
+const text =
+`Every moment with you feels like a beautiful dream.
+
+Thank you for bringing happiness, warmth, and love into my life.
+
+No matter where life takes us, you will always have a special place in my heart. ❤️`;
+
+const typingElement = document.getElementById("typing-text");
+const photos = document.querySelector(".photos");
+
+let i = 0;
+let typingStarted = false;
+
+function typeWriter(){
+
+    if(i < text.length){
+
+        if(text.charAt(i) === "\n"){
+            typingElement.innerHTML += "<br>";
+        }else{
+            typingElement.innerHTML += text.charAt(i);
+        }
+
+        i++;
+
+        setTimeout(typeWriter,40);
+
+    }else{
+
+        photos.classList.add("show");
+
+    }
+}
+
+document.getElementById("open").addEventListener("change",function(){
+
+    if(this.checked && !typingStarted){
+
+        typingStarted = true;
+
+        setTimeout(()=>{
+            typeWriter();
+        },1200);
+
+    }
+
+});
+</script>
 
 </body>
 </html>
