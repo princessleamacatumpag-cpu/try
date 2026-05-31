@@ -44,37 +44,79 @@ body::before{
 
 .container{
     position:relative;
+    width:340px;
+    height:500px;
     cursor:pointer;
 }
 
-/* Hidden Checkbox */
-#open{
-    display:none;
+/* Letter starts hidden behind envelope */
+.letter{
+    position:absolute;
+    width:300px;
+    height:420px;
+    background:#fffdf8;
+    left:20px;
+    bottom:20px;
+
+    border-radius:12px;
+    padding:20px;
+    box-shadow:0 10px 20px rgba(0,0,0,.15);
+
+    z-index:1;
+
+    transform:translateY(220px);
+    transition:1.5s ease;
+    overflow-y:auto;
 }
 
-/* Envelope */
+/* Envelope stays in front */
 .envelope{
     width:340px;
     height:220px;
     background:#fff;
-    position:relative;
+    position:absolute;
+    bottom:0;
+    left:0;
+
     border-radius:0 0 12px 12px;
     box-shadow:0 10px 30px rgba(0,0,0,.15);
-    overflow:hidden;
+
+    z-index:10;
 }
 
-/* Flap */
+/* Front envelope panel */
+.envelope::before{
+    content:"";
+    position:absolute;
+    width:0;
+    height:0;
+
+    border-left:170px solid transparent;
+    border-right:170px solid transparent;
+    border-bottom:110px solid #f8d7e3;
+
+    bottom:0;
+    left:0;
+
+    z-index:20;
+}
+
+/* Top flap */
 .flap{
     width:0;
     height:0;
+
     border-left:170px solid transparent;
     border-right:170px solid transparent;
     border-top:120px solid #ff8fb1;
+
     position:absolute;
     top:0;
+
     transform-origin:top;
     transition:1s ease;
-    z-index:100;
+
+    z-index:30;
 }
 
 /* Heart Seal */
@@ -166,17 +208,21 @@ body::before{
     transform:rotateX(180deg);
 }
 
+/* Letter rises out of envelope */
 #open:checked ~ .letter{
-    transform:translateY(-320px);
+    transform:translateY(-180px);
 }
-
+    
 /* Click Area */
 .open-btn{
     position:absolute;
     width:340px;
     height:220px;
-    z-index:200;
+    bottom:0;
+    left:0;
+    z-index:100;
 }
+    
 </style>
 </head>
 <body>
